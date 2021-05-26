@@ -1,0 +1,10 @@
+Escopos
+-Ciclo de vida do bean;
+ManagedBean -> jsf gerencia a criação do bean;
+
+Inserir -> altera o status -> grava dado
+@RequestScope
+
+@ViewScoped -> em memoria enquanto a view que o chamou estiver ativa.
+
+@SessionScoped -> enquanto sessao estiver aberta o bean estará ativo
