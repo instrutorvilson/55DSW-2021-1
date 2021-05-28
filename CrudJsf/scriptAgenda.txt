@@ -1,0 +1,27 @@
+CREATE TABLE Contato (
+idcontato serial PRIMARY KEY,
+nome varchar(50),
+fone varchar(15),
+email varchar(50),
+usuario int
+);
+
+CREATE TABLE compromisso (
+idcompromisso serial PRIMARY KEY,
+descricao varchar(300),
+local varchar(100),
+data date,
+idcontato int,
+usuario int,
+FOREIGN KEY(idcontato) REFERENCES Contato (idcontato)
+);
+
+CREATE TABLE usuario (
+idusuario serial PRIMARY KEY,
+nome varchar(50),
+username varchar(10),
+senha varchar(8)
+);
+
+ALTER TABLE Contato ADD FOREIGN KEY(usuario) REFERENCES usuario (idusuario);
+ALTER TABLE compromisso ADD FOREIGN KEY(usuario) REFERENCES usuario (idusuario);
