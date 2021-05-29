@@ -5,6 +5,12 @@
  */
 package controller.beans;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -19,7 +25,26 @@ public class BeanContato {
     private String fone;
     private String email;
     private int idusuario;
-
+    private String filtro = "";
+    private List<Contato> lista = new ArrayList<>();
+   
+    public void getAll(){
+        lista.clear();
+        try {
+            ResultSet rs = DaoContato.getAll(filtro);
+            while(rs.next()){
+               lista.add(new Contato(
+                       rs.getInt("idcontato"),
+                       rs.getString("nome"),
+                       rs.getString("fone"),
+                       rs.getString("email"),
+                       rs.getInt("usuario")));
+            }
+        } catch (SQLException ex) {
+            //
+        }
+    }
+    
     public void salvar() {
         FacesContext context = FacesContext.getCurrentInstance();
         FacesMessage msg = null;
@@ -87,6 +112,18 @@ public class BeanContato {
 
     public void setIdusuario(int idusuario) {
         this.idusuario = idusuario;
+    }
+
+    public List<Contato> getLista() {
+        return lista;
+    }
+
+    public String getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(String filtro) {
+        this.filtro = filtro;
     }
 
 }
