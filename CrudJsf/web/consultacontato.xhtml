@@ -12,6 +12,7 @@
             <h:inputText value="#{beanContato.filtro}"/>
             <h:commandButton value="Filtrar" action="#{beanContato.getAll()}"/>
         </h:form>
+        
         <h:dataTable var="ct" value="#{beanContato.lista}">
             <h:column>
                 <f:facet name="header">Id</f:facet>
@@ -31,7 +32,20 @@
                 <f:facet name="header">Email</f:facet>
                 <h:outputLabel value="#{ct.email}" />
             </h:column>
+            <h:column>
+                <f:facet name="header">Ações</f:facet>
+                <h:form>
+                    <h:commandLink value="Editar" action="#{beanContato.editar(ct)}"/>
+                </h:form>                
+            </h:column>
+            <h:column>
+                <f:facet name="header">Ações</f:facet>
+                <h:form>
+                    <h:commandLink value="Excluir" action="#{beanContato.excluir(ct)}"/>
+                </h:form>                
+            </h:column>
         </h:dataTable>
+            
     </h:body>
 </html>
 

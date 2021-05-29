@@ -13,11 +13,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import modelo.DAO.DaoContato;
 import modelo.entidades.Contato;
 
 @ManagedBean
+@ViewScoped
 public class BeanContato {
 
     private int idcontato;
@@ -28,6 +30,28 @@ public class BeanContato {
     private String filtro = "";
     private List<Contato> lista = new ArrayList<>();
    
+    public String editar(Contato ct){
+       return "editacontato.jsf?faces-redirect=true&idcontato="+ct.getIdcontato();
+    }
+    
+    public void excluir(Contato ct){
+       DaoContato.excluir(ct.getIdcontato());
+    }
+    
+    public void getById(int id){
+      ResultSet rs = DaoContato.getById(id);
+        try {
+            if(rs.next()){
+               idcontato = rs.getInt("idcontato");
+               nome = rs.getString("nome");
+               fone =  rs.getString("fone");
+               email = rs.getString("email");
+            } 
+        } catch (SQLException ex) {
+            //
+        }
+    }
+    
     public void getAll(){
         lista.clear();
         try {

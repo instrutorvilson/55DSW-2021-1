@@ -15,6 +15,22 @@ import modelo.entidades.Contato;
 import utils.Conexao;
 
 public class DaoContato {
+    
+  public static boolean excluir(int id){
+      try {
+          Connection conexao = Conexao.conectar();
+          String sql = "delete from contato "+
+                       " where idcontato = ? ";
+          PreparedStatement stm = conexao.prepareStatement(sql);
+          stm.setInt(1, id);
+          stm.execute();
+      } catch (SQLException ex) {
+          throw new RuntimeException("Erro ao excluir contato: " + ex.getMessage());
+      }
+      return true;
+  }  
+  
+  
   public static boolean salvar(Contato ct){
       try {
           Connection conexao = Conexao.conectar();
@@ -39,6 +55,21 @@ public class DaoContato {
           String sql = "select * from contato"+
                         " where nome like '%"+filtro+"%'";
           PreparedStatement stm = conexao.prepareStatement(sql);
+          rs = stm.executeQuery();
+      } catch (SQLException ex) {
+          throw new RuntimeException("Erro de consulta: " + ex.getMessage());
+      }
+      return rs;
+  }
+  
+  public static ResultSet getById(int id){
+      ResultSet rs = null;
+      try {          
+          Connection conexao = Conexao.conectar();
+          String sql = "select * from contato"+
+                        " where idcontato = ? ";
+          PreparedStatement stm = conexao.prepareStatement(sql);
+          stm.setInt(1, id);
           rs = stm.executeQuery();
       } catch (SQLException ex) {
           throw new RuntimeException("Erro de consulta: " + ex.getMessage());
