@@ -88,6 +88,17 @@ public class Contato implements Serializable {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Contato{id=").append(id);
+        sb.append(", nome=").append(nome);
+        sb.append(", fone=").append(fone);
+        sb.append(", email=").append(email);
+        sb.append('}');
+        return sb.toString();
+    }
+
    
     
 }
