@@ -1,0 +1,34 @@
+-JPA - Java Persistence API -> especificação 
+ ORM -> Object Relational Maping
+
+Objeto -> linha
+
+linha -> objeto
+
+ JDBC 
+ --
+               classes
+               ------
+                SQL
+               ------
+                Database
+
+JPA
+             classes
+             --------
+                JPA
+             --------
+               Database
+
+
+Implementação: Hibernate, eclipse link;
+Sequelize; Entity framework;
+
+
+entitymanagerFactory -> Drive: configurações -> persistence.xml
+EntityManager -> monitoramento das entidades
+
+query, namedquery, typedquery -> JPQL
+
+codfirst -> entidades -> tabelas
+databasefirst -> tabelas -> entidades
