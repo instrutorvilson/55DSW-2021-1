@@ -3,6 +3,7 @@
   <persistence-unit name="ConceitosJPAPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>entities.Contato</class>
+    <class>entities.Compromisso</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/dsw2021"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>

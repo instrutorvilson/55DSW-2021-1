@@ -5,8 +5,11 @@
  */
 package conceitosjpa;
 
+import entities.Compromisso;
 import entities.Contato;
+import java.sql.Date;
 import java.util.List;
+import javax.print.DocFlavor;
 
 /**
  *
@@ -38,11 +41,25 @@ public class ConceitosJPA {
        dao.DaoGeneric.excluir(1l);
        System.out.println("Excluido");*/
        
-       List<Contato> lista = dao.DaoGeneric.getAll();
+      /* List<Contato> lista = dao.DaoGeneric.getAll();
        for(Contato ct : lista){
            System.out.println(ct.toString());
        }
-       
+       */
+     /* Compromisso  cp = new Compromisso();
+      cp.setData(Date.valueOf("2010-06-11"));
+      cp.setLocal("sextou");      
+      dao.DaoGeneric.persist(cp);
+      
+      Compromisso  cp2 = new Compromisso();
+      cp2.setData(Date.valueOf("2010-06-11"));
+      cp2.setLocal("Estudando... ");
+      dao.DaoGeneric.persist(cp2);*/
+     
+     List<Compromisso> lista = dao.DaoGeneric.getAllCompromissos();
+     for(Compromisso ct : lista){
+           System.out.println(ct.toString());
+       }
     }
     
 }

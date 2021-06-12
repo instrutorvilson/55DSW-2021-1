@@ -5,11 +5,13 @@
  */
 package dao;
 
+import entities.Compromisso;
 import entities.Contato;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -19,9 +21,7 @@ import javax.persistence.TypedQuery;
 public class DaoGeneric {
 
     public static void persist(Object object) {
-        EntityManagerFactory emf = 
-                Persistence.createEntityManagerFactory("ConceitosJPAPU");
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = getEntityManager();
         em.getTransaction().begin();
         try {
             em.persist(object);
@@ -34,16 +34,12 @@ public class DaoGeneric {
     }
     
     public static Contato getById(long id){
-        EntityManagerFactory emf = 
-                Persistence.createEntityManagerFactory("ConceitosJPAPU");
-        EntityManager em = emf.createEntityManager();
+      EntityManager em = getEntityManager();
       return em.find(Contato.class, id);  
     }
             
     public static void alterar(Object object) {
-        EntityManagerFactory emf = 
-                Persistence.createEntityManagerFactory("ConceitosJPAPU");
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = getEntityManager();
         em.getTransaction().begin();
         try {
             em.merge(object);
@@ -56,9 +52,7 @@ public class DaoGeneric {
     }
     
     public static void excluir(long id) {
-        EntityManagerFactory emf = 
-                Persistence.createEntityManagerFactory("ConceitosJPAPU");
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = getEntityManager();
         em.getTransaction().begin();
         try {
             Contato ct = em.find(Contato.class, id);
@@ -71,15 +65,22 @@ public class DaoGeneric {
             em.close();
         }
     }
-    
-    public static List<Contato> getAll(){
-       EntityManagerFactory emf = 
+    static EntityManager getEntityManager(){
+        EntityManagerFactory emf = 
                 Persistence.createEntityManagerFactory("ConceitosJPAPU");
-        EntityManager em = emf.createEntityManager();
-        
-        TypedQuery<Contato> tq = em.createQuery("select c from Contato c",
-                Contato.class);
-        return tq.getResultList();
+        return emf.createEntityManager();
     }
     
+    public static List<Contato> getAll(){
+       TypedQuery<Contato> tq = 
+               getEntityManager().createQuery("select c from Contato c",
+                Contato.class);
+        return tq.getResultList();
+    }    
+    
+    public static List<Compromisso> getAllCompromissos(){
+        EntityManager em = getEntityManager();
+        Query q = em.createNamedQuery("Compromisso.findAll");
+        return q.getResultList();
+    }
 }
