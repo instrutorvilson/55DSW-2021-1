@@ -11,6 +11,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -49,7 +50,7 @@ public class Aula {
         Contato ct = dao.DaoGeneric.getById(id);
         if (ct == null) {
             return Response.status(Response.Status.NOT_FOUND)
-                           .build();
+                    .build();
         } else {
             return Response.status(Response.Status.FOUND)
                     .entity(ct)
@@ -68,4 +69,36 @@ public class Aula {
                 .build();
     }
 
+    @PUT
+    @Path("{id}")
+    @Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+    public Response alterar(@PathParam("id") long id, String content) {
+        Gson gson = new Gson();
+        Contato ct = dao.DaoGeneric.getById(id);
+        if (ct == null) {
+            return Response.status(Response.Status.NOT_FOUND)
+                    .build();
+        } else {
+            ct = gson.fromJson(content, Contato.class);
+            dao.DaoGeneric.alterar(ct);
+            return Response.status(Response.Status.GONE)
+                    .entity(ct)
+                    .build();
+        }
+    }
+    
+    @DELETE
+    @Path("{id}")
+    @Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+    public Response excluir(@PathParam("id") long id) {
+        Contato ct = dao.DaoGeneric.getById(id);
+        if (ct == null) {
+            return Response.status(Response.Status.NOT_FOUND)
+                    .build();
+        } else {
+            dao.DaoGeneric.excluir(id);
+            return Response.status(Response.Status.GONE)
+                    .build();
+        }
+    }
 }
