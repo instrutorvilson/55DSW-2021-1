@@ -29,6 +29,7 @@ public class ApplicationConfig extends javax.ws.rs.core.Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(services.Aula.class);
+        resources.add(services.CompromissoResource.class);
     }
     
 }

@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -30,8 +32,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Compromisso.findAll", query = "SELECT c FROM Compromisso c"),
     @NamedQuery(name = "Compromisso.findByIdcompromisso", query = "SELECT c FROM Compromisso c WHERE c.idcompromisso = :idcompromisso"),
-    @NamedQuery(name = "Compromisso.findByData", query = "SELECT c FROM Compromisso c WHERE c.data = :data"),
-    @NamedQuery(name = "Compromisso.findByLocal", query = "SELECT c FROM Compromisso c WHERE c.local = :local")})
+    @NamedQuery(name = "Compromisso.findByData", query = "SELECT c FROM Compromisso c WHERE c.data = :data")
+    })
 public class Compromisso implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,8 +45,9 @@ public class Compromisso implements Serializable {
     @Column(name = "data")
     @Temporal(TemporalType.DATE)
     private Date data;
-    @Column(name = "local")
-    private String local;
+    @ManyToOne
+    @JoinColumn(name = "idcontato")
+    private Contato contato;
 
     public Compromisso() {
     }
@@ -69,13 +72,6 @@ public class Compromisso implements Serializable {
         this.data = data;
     }
 
-    public String getLocal() {
-        return local;
-    }
-
-    public void setLocal(String local) {
-        this.local = local;
-    }
 
     @Override
     public int hashCode() {
@@ -97,11 +93,13 @@ public class Compromisso implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Compromisso{" + "idcompromisso=" + idcompromisso + ", data=" + data + ", local=" + local + '}';
+    public Contato getContato() {
+        return contato;
     }
 
+    public void setContato(Contato contato) {
+        this.contato = contato;
+    }
   
     
 }
