@@ -1,0 +1,13 @@
+https://developpaper.com/nedb-node-js-embedded-database/
+
+Instalar módulo express
+//: npm install express --save
+
+Pegar dados da requisiçaõ POST
+//: npm install body-parser
+
+https://developpaper.com/nedb-node-js-embedded-database/
+//: npm install nedb --save
+
+Instalar nodemon
+//: npm install nodemon
