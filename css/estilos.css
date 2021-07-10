@@ -1,0 +1,14 @@
+p {
+    color: red;
+    text-align: center;
+  } 
+  
+  h1 {
+      color:blue;
+   }
+
+   h1:hover{
+       color:brown;
+       font-size: 3em;
+       text-decoration: dashed;       
+   }
