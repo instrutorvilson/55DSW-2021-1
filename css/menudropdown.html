@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    .container{
+        width: 150px;
+    }
+    .dropdown-content{
+        display: none;
+        width: 150px;
+    }
+
+    .dropdown{
+        display: block;
+    }
+
+    .dropdown:hover .dropdown-content{
+        display: block;
+    }
+    
+    .menu-item{
+       display: flex;
+       border: 1px black solid;
+       padding: 10px;
+       background-color: gray;
+       color: white;      
+    }
+
+    .parent-menu{
+        background-color: brown;
+    }
+</style>
+
+<body>
+
+<div class="container">
+  <div class="dropdown">
+    <button class="menu-item parent-menu">Hover Over Me!</button>
+    <div class="dropdown-content">
+      <a href="#" class="menu-item">Link 1</a>
+      <a href="#" class="menu-item">Link 2</a>
+      <a href="#" class="menu-item">Link 3</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
