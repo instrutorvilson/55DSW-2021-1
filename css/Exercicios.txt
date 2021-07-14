@@ -1,0 +1,13 @@
+1-Criar uma pagina home com link para as páginas
+
+2-Criar uma página de cadastro com os seguintes campos:
+-nome
+-Fone
+-Sexo
+-estado civil
+-email
+-fone
+-preferências
+-Observações
+
+3-Criar outra página com uma tabela para listar todos os dados do cadastro.
