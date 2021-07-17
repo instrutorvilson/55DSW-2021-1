@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Cadastro de pessoa</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            border: 2px red solid;
+            padding: 20px;
+
+        }
+
+        label {
+            font-size: 20pt;
+        }
+
+
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+        }
+
+       textarea:focus, select:focus, input[type=text]:focus{
+            background-color: darkgreen;
+            color: white;
+            font-weight: bold;
+        }
+
+        span {
+            font-size: 20px;
+        }
+
+        div{
+            margin-bottom: 20px;
+        }
+
+        input[type=button]{
+            width: 25%;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <label>Nome</label>
+            <input type="text" />
+            <label>Fone</label>
+            <input type="text" />
+            <label>Estado civil</label>
+            <select>
+                <option>Solteiro</option>
+                <option>Casado</option>
+                <option>Divorciado</option>
+                <option>Ficando</option>
+                <option>Enrolando</option>
+            </select>
+            <div style="border: 1px green solid;">
+                <label>Sexo</label>
+                <div style="border: 1px red solid; padding: 10px;">
+                   <!--
+                       <div style="margin-right: 20px; border: 1px black solid">
+                        <input type="radio" name="sexo" checked><span>Femenino</span></input>
+                    </div>
+                    <div>
+                        <input type="radio" name="sexo" /> <span>Masculino</span> </input>
+                    </div>
+                   --> 
+                   <input type="radio" name="sexo" checked><span>Femenino</span></input>
+                   <input type="radio" name="sexo" /> <span>Masculino</span> </input>
+                </div>
+            </div>
+            <div>
+                <label>Preferências</label>
+                <div>
+                    <input type="checkbox"> <span>Livros</span></input>
+                    <input type="checkbox"> <span>Series</span></input>
+                    <input type="checkbox"> <span>Futebol</span></input>
+                </div>
+            </div>
+
+            <label>Observações</label>
+            <textarea rows="5" cols="50" placeholder="Observaçoes"></textarea>
+
+            <div>
+                <input type="button" value="Salvar" />
+                <input type="button" value="Altera" />
+                <input type="button" value="Excluir" />
+                <input type="reset" value="Cancelar" />
+
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
