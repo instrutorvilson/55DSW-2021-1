@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+           background-color: red;
+        }
+
+        .green{
+           background-color:green;
+        }
+    </style>
+</head>
+<body>
+    <div class="red">div red</div>
+    <p id="p1">nnn</p>
+    <p class="red"> paragrafo red</p>
+    
+    <input type="text" value="nckewfnweon" id="texto" />    
+    <button onclick="alteraTextoParagrafo()">Trocar texto</button> 
+    <hr />
+   <!-- <input type="text" id="cpf" placeholder="Informe seu cpf" onblur="validaCpf()"/> -->
+
+    <input type="text" name="nome" placeholder="Informe nome" />
+    <input type="text" name="fone" placeholder="Informe fone" />
+    <button onclick="lerDadosContato()">Mostras</button>
+    
+    <script>
+        function lerDadosContato(){
+            var dados = document.getElementsByName("nome");
+            document.getElementById("p1").innerHTML = dados[0].value;
+        }
+
+        function alteraTextoParagrafo(){
+           // document.getElementById("p1").innerHTML = document.getElementById("texto").value;
+           var texto = document.getElementById("texto");
+          // document.getElementById("p1").innerHTML = texto.value;
+         // var paragrafos = document.getElementsByTagName("p");
+         var paragrafos = document.getElementsByClassName("red");
+          paragrafos[1].innerHTML = texto.value;
+        }    
+        
+        function validaCpf(){
+           var cpf = document.getElementById("cpf");
+           if(cpf.value.length < 11){
+               alert("Cpf inválido");
+               cpf.focus();
+           } 
+        }
+    </script>     
+</body>
+</html>
