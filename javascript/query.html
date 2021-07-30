@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h3 class="xyz">A h3 element</h3>
+    <h3 class="xyz">A h3 element</h3>
+    <h3 class="xyz">A h3 element</h3>
+
+    <h2>A h2 element</h2>
+    <p id="xpto"> jbcj</p>
+    <p class="xyz">p2</p>
+    <p>p3</p>
+    <p>p4</p>
+
+
+    <script>
+       // document.querySelector("p").style.backgroundColor = "red";
+      //  document.querySelector("#xpto").style.backgroundColor = "yellow";
+        document.querySelector("p.xyz").style.backgroundColor = "red";
+        
+        var y = document.querySelectorAll(".xyz");
+         y[1].style.backgroundColor = "blue";
+         
+        var x = document.querySelectorAll("p");
+        x[3].style.backgroundColor = "green";
+    </script>
+
+</body>
+
+</html>
