@@ -1,0 +1,55 @@
+<html>
+<head>
+    <style>
+        .red{
+            background-color: red;
+        }
+
+        .green{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cabecalho">
+
+    </div>
+
+    <div id="div1">
+        <p id="p1">This is a paragraph.</p>
+        <p id="p2">This is another paragraph.</p>
+    </div>
+
+    <script>
+        const para = document.createElement("p");
+        const node = document.createTextNode("This is new.");
+        para.appendChild(node);
+        const element = document.getElementById("div1");
+        element.appendChild(para);
+
+        const bt = document.createElement("button");
+        const btText = document.createTextNode("Trocar estilo");
+        bt.appendChild(btText);
+        bt.setAttribute("onclick","trocaEstilo()");
+        document.querySelector("div").appendChild(bt);
+        document.querySelector("div").appendChild(document.createElement("hr")) ;
+        
+        function trocaEstilo(){
+            var x = document.querySelector("p");
+            if(x.className === null){
+                x.className = "red";
+            }
+
+            if(x.className === "red"){
+                x.className = "green";
+            }
+            else{
+                x.className = "red";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            background-color: red;
+        }
+
+        .green{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="trocar()">Trocar estilo</button>
+    <p>Ola mundo</p>
+    <script>
+        function trocar(){
+            var x = document.querySelector("p");
+            if(x.className === null){
+                x.className = "red";
+            }
+
+            if(x.className === "red"){
+                x.className = "green";
+            }
+            else{
+                x.className = "red";
+            }
+        }
+    </script>
+</body>
+</html>
