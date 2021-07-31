@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function somar(a,b){
+            return a + b;
+        }
+
+        var x = somar(10,5);
+        document.write(x)
+
+
+       var z = function (x,y){
+            return x + y;
+        }
+
+        document.write("<br>" + z(500,150));
+
+        var result = (x, y) => x + y;
+        document.write("<br>" + result(500,150));
+
+        var r = (x, y) => {
+            if(x < 0 )
+              alert("numero não pode ser menor que zero")
+            return x + y;  
+        }
+        document.write("<br>" + r(5000,150));
+    </script>
+</body>
+</html>
