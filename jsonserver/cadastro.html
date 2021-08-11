@@ -11,10 +11,12 @@
 
 <body>
     <div class="cadastro">
+        <input type="text" id="id" placeholder="Informe id" />
         <input type="text" id="nome" placeholder="Informe o nome" />
         <input type="text" id="email" placeholder="Informe o email" />
 
         <input type="button" id="gravar" value="Gravar" />
+        <input type="button" id="alterar" value="Alterar" />
 
         <label id="result"></label>
     </div>
@@ -22,7 +24,7 @@
     <script>
         $(document).ready(function () {
             $("#gravar").click(function () {
-                const payload = JSON.stringify(dados());
+                const payload = JSON.stringify(dadosInsert());
                 $.post({
                     url: "http://localhost:3000/users",
                     data: payload,
@@ -33,19 +35,58 @@
                     limpaCampos();
                 });
             })
-        })
 
-        function dados() {
-             var obj = {
+            $("#alterar").click(() => {
+                const idContato = $("#id").val();
+                $.ajax({
+                    type: "PUT",
+                    url: "http://localhost:3000/users/"+idContato,
+                    data: JSON.stringify(dadosUpdate()),
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8"
+                }).done(function (data, status) {
+                    alert("Contato " + data.id + " alterado com sucesso");
+                    limpaCampos();
+                });
+            }
+            )
+
+            $("#id").blur(() =>{
+                const idContato = $("#id").val();
+                $.get("http://localhost:3000/users/"+idContato, (data, status) => {
+                   display(data);                   
+                })
+            })
+        })
+        
+
+        function dadosInsert() {
+            var obj = {
                 name: $("#nome").val(),
                 email: $("#email").val()
-               }
+            }
             return obj;
         }
 
-        function limpaCampos(){
+        function dadosUpdate() {
+            var obj = {
+                id: $("#nome").val(),
+                name: $("#nome").val(),
+                email: $("#email").val()
+            }
+            return obj;
+        }
+
+        function limpaCampos() {
             $(":text").val("");
-        
+
+        }
+
+        function display(dados) {
+            $("#gravar").prop('disabled',true);
+            $("#id").attr('disabled',true);
+            $("#nome").val(dados.name);
+            $("#email").val(dados.email);
         }
     </script>
 </body>
