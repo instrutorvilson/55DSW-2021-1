@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <div class="cadastro">
+        <input type="text" id="nome" placeholder="Informe o nome" />
+        <input type="text" id="email" placeholder="Informe o email" />
+
+        <input type="button" id="gravar" value="Gravar" />
+
+        <label id="result"></label>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#gravar").click(function () {
+                const payload = JSON.stringify(dados());
+                $.post({
+                    url: "http://localhost:3000/users",
+                    data: payload,
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8"
+                }).done(function (data, status) {
+                    alert("Contato " + data.id + " inserido com sucesso");
+                    limpaCampos();
+                });
+            })
+        })
+
+        function dados() {
+             var obj = {
+                name: $("#nome").val(),
+                email: $("#email").val()
+               }
+            return obj;
+        }
+
+        function limpaCampos(){
+            $(":text").val("");
+        
+        }
+    </script>
+</body>
+
+</html>

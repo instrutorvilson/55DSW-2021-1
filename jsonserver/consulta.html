@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Consulta</title>
+</head>
+<body>
+    <div>
+        <button>Pesquisar</button>
+        <table>
+            <thead>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>email</th>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $.get("http://localhost:3000/users", (data, status) => {
+                   display(data);
+                   console.log(data)
+                })
+            })
+        })
+    </script>
+
+    <script>
+        function display(dados) {
+            var text = "";
+            for (ob in dados) {
+                text += "<tr>";
+                text += "<td>" + dados[ob].id + "</td>";
+                text += "<td>" + dados[ob].name + "</td>";
+                text += "<td>" + dados[ob].email + "</td>";               
+                text += "</tr>";
+            }
+            document.getElementsByTagName("tbody")[0].innerHTML = text;
+           // $("tbody").
+        }
+    </script>
+</body>
+</html>

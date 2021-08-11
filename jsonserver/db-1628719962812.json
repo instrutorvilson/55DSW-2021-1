@@ -1,0 +1,65 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Ana",
+      "email": "ana@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "José",
+      "email": "jose@gmail.com"
+    },
+    {
+      "id": 3,
+      "name": "Pedro",
+      "email": "pedro@gmail.com"
+    },
+    {
+      "id": 4,
+      "name": "Antonio",
+      "email": "antonio@gmail.com"
+    },
+    {
+      "name": "teste antonio",
+      "email": "antonio@gmail.com",
+      "id": 5
+    },
+    {
+      "name": "ee",
+      "email": "ee",
+      "id": 11
+    },
+    {
+      "name": "tr",
+      "email": "rrr",
+      "id": 12
+    }
+  ],
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "KFC restaurant",
+      "address": "Principal, 50",
+      "email": "kfc@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Berta restaurant",
+      "address": "Central, 50",
+      "email": "berta@gmail.com"
+    },
+    {
+      "id": 3,
+      "name": "Sushi restaurant",
+      "address": "XV de novembro, 50",
+      "email": "sushi@gmail.com"
+    },
+    {
+      "name": "Vista Alegre",
+      "address": "Morumbi, s/n",
+      "email": "alegria@agora.com",
+      "id": 4
+    }
+  ]
+}
