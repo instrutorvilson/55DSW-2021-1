@@ -1,11 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Ana fvfr",
-      "email": "ana@gmail.com"
-    },
-    {
       "id": 2,
       "name": "teste antonio da silva",
       "email": "antonio@gmail.com"
@@ -21,9 +16,19 @@
       "id": 4
     },
     {
-      "name": "joao",
-      "email": "joao@gmail.com",
-      "id": 5
+      "id": 5,
+      "name": "João Pereira",
+      "email": "joaopereira@gmail.com"
+    },
+    {
+      "id": 6,
+      "name": "Sinha moça",
+      "email": "da siva"
+    },
+    {
+      "name": "Teste novo nome",
+      "email": "teste@gmail.com",
+      "id": 7
     }
   ],
   "restaurants": [

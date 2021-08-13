@@ -1,0 +1,4 @@
+https://www.fabricadecodigo.com/json-server/
+
+inicia servidor
+// json-server --watch db.json
