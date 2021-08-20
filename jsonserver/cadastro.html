@@ -5,20 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>Cadastro</title>
+   
 </head>
 
 <body>
-    <div class="cadastro">
-        <input type="text" id="id" placeholder="Informe id" />
-        <input type="text" id="nome" placeholder="Informe o nome" />
-        <input type="text" id="email" placeholder="Informe o email" />
+    <div class="container">
+        <input type="text" class="form-control" id="id" placeholder="Informe id" />
+        <input type="text" class="form-control mb-2" id="nome" placeholder="Informe o nome" />
+        <input type="text" class="form-control mb-2" id="email" placeholder="Informe o email" />
 
-        <input type="button" id="gravar" value="Gravar" />
-        <input type="button" id="alterar" value="Alterar" />
-        <input type="button" id="excluir" value="Excluir" />
-        <input type="button" id="novo" value="Novo" />
+        <input type="button" class="btn btn-primary" id="gravar" value="Gravar" />
+        <input type="button" class="btn btn-outline-secondary" id="alterar" value="Alterar" />
+        <input type="button" class="btn btn-outline-danger" id="excluir" value="Excluir" />
+        <input type="button" class="btn btn-outline-info" id="novo" value="Novo" />
 
         <label id="result"></label>
     </div>
@@ -38,30 +43,38 @@
                 });
             })
 
+            /*  $("#alterar").click(() => {
+                 const idContato = $("#id").val();
+                  $.ajax({
+                      type: "PUT",
+                      url: "http://localhost:3000/users/" + idContato,
+                      data: JSON.stringify(dadosUpdate()),
+                      dataType: 'json',
+                      contentType: "application/json; charset=utf-8"
+                  }).done(function (data, status) {
+                      alert("Contato " + data.id + " alterado com sucesso");
+                      limpaCampos();
+                  });
+              }
+              )
+        */
+
             $("#alterar").click(() => {
                 const idContato = $("#id").val();
-                $.ajax({
-                    type: "PUT",
-                    url: "http://localhost:3000/users/" + idContato,
-                    data: JSON.stringify(dadosUpdate()),
-                    dataType: 'json',
-                    contentType: "application/json; charset=utf-8"
-                }).done(function (data, status) {
-                    alert("Contato " + data.id + " alterado com sucesso");
-                    limpaCampos();
-                });
-            }
-            )
+                const url = "http://localhost:3000/users/" + idContato;
+                const dados = JSON.stringify(dadosUpdate());
+                put(url, dados);
+            })
 
             $("#id").blur(() => {
                 const idContato = $("#id").val();
-                $.get("http://localhost:3000/users/" + idContato, 
-                (data, status) => {
-                    display(data);
-                })
+                $.get("http://localhost:3000/users/" + idContato,
+                    (data, status) => {
+                        display(data);
+                    })
             })
 
-            $("#novo").click(()=>{
+            $("#novo").click(() => {
                 ativarBotoes(false);
                 limpaCampos();
             })
@@ -71,8 +84,8 @@
                 $.ajax({
                     type: "DELETE",
                     url: "http://localhost:3000/users/" + idContato,
-                   /* dataType: 'json',
-                    contentType: "application/json; charset=utf-8"*/
+                    /* dataType: 'json',
+                     contentType: "application/json; charset=utf-8"*/
                 }).done(function (data, status) {
                     alert("Contato " + idContato + " excluído com sucesso");
                     limpaCampos();
@@ -80,6 +93,18 @@
             });
         })
 
+        function put(url, dados) {
+            $.ajax({
+                type: "PUT",
+                url: url,
+                data: dados,
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8"
+            }).done(function (data, status) {
+                alert("Contato " + data.id + " alterado com sucesso");
+                limpaCampos();
+            });
+        }
         function dadosInsert() {
             var obj = {
                 name: $("#nome").val(),

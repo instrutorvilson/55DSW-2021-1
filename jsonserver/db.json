@@ -29,6 +29,16 @@
       "name": "Teste novo nome",
       "email": "teste@gmail.com",
       "id": 7
+    },
+    {
+      "name": "teste2",
+      "email": "bggg",
+      "id": 8
+    },
+    {
+      "name": "dwdww",
+      "email": "eeee",
+      "id": 9
     }
   ],
   "restaurants": [
